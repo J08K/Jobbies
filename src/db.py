@@ -5,7 +5,7 @@ class JobbiesDB:
     conn: redis.Connection
     
     def __init__(self) -> None:
-        self.conn = redis.Redis(host="localhost", port=6379, decode_responses=True)
+        self.conn = redis.Redis(host="cache", port=6379, decode_responses=True)
         
         if self.conn.get(self.cur_target) is None:
             print("Creating new entry...")
