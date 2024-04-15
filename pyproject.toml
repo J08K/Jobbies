@@ -1,0 +1,13 @@
+[project]
+name = "src"
+version = "0.2.0"
+description = "A tracker for how many times Job has asked if anyone has hobbies."
+dependencies = [
+    "flask",
+    "redis",
+]
+requires-python = ">=3.12"
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"

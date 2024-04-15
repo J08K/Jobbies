@@ -17,10 +17,16 @@ class JobbiesDB:
         return f"count:{today.year}:{today.month}"
 
     def get_count(self) -> int:
-        return self.conn.get(self.cur_target)
+        result = self.conn.get(self.cur_target)
+        
+        if result is None:
+            self.conn.set(self.cur_target, 0)
+            return 0
+
+        return int(self.conn.get(self.cur_target))
 
     def add_one(self) -> int:
-        cur_count = int(self.get_count())
+        cur_count = self.get_count()
         
         self.conn.set(self.cur_target, cur_count + 1)
         
